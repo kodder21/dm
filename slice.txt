@@ -1,0 +1,110 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int arr[3][3][3], i, j, k, a, b, c, option=0, sem, student, att;
+    int entered_S_No,entered_semester,choosen_attribute;
+    int lower_x_range, upper_x_range, lower_y_range, upper_y_range, lower_z_range, upper_z_range;
+
+    const char* column_val[10] = {"S.No", "Age"};
+
+    cout<<"Enter the dimensions";
+    cout<<"*****"<<endl;
+    cout<<"Enter the size of the semester dimensions\n";
+    cin>>a;
+    cout<<"Enter the size of the student dimensions\n";
+    cin>>b;
+    cout<<"Enter the size of the attribute dimensions\n";
+    cin>>c;
+
+    for(i=0;i<a;i++)
+    {
+        for(j=0;j<b;j++)
+        {
+            for(k=0;k<c;k++)
+            {
+                cout<<"Enter the "<<column_val[k]<<" of student: "<<j+1<<"in sem: "<<i+1<<endl;
+                cout<<"location\t"<<i<<"\t"<<j<<"\t"<<k<<endl;
+                cin>>arr[i][j][k];
+            }
+        }
+    }
+
+
+
+    do
+    {
+        cout<<"Enter the dimension along which you want to slice"<<endl;
+        cout<<"1. Semester wise"<<endl;
+        cout<<"2. Student Row wise"<<endl;
+        cout<<"3. Attribute wise"<<endl;
+        cout<<"4. Exit"<<endl;
+
+        cin>>option;
+
+        switch(option)
+        {
+            case 1:
+                {
+                    cout<<"Enter the semester you want to extract"<<endl;
+                    for(i=0;i<a;i++)
+                    {
+                        cout<<"sem - "<<i+1<<endl;
+                    }
+                    cin>>sem;
+                    for(j=0;j<b;j++)
+                    {
+                        for(k=0;k<c;k++)
+                        {
+                            cout<<arr[sem-1][j][k]<<"\t";
+                        }
+                    }
+                    break;
+                }
+
+            case 2:
+                {
+                    cout<<"Enter the student row number you want to extract"<<endl;
+                    for(j=0;j<b;j++)
+                    {
+                        cout<<"Student - "<<j+1<<endl;
+                    }
+                    cin>>student;
+                    for(i=0;i<a;i++)
+                    {
+                        for(k=0;k<c;k++)
+                        {
+                            cout<<arr[i][student-1][k]<<"\t";
+                        }
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    cout<<"Enter the Attribute you want to slice"<<endl;
+                    for(k=0;k<c;k++)
+                    {
+                        cout<<column_val[k]<<"-"<<k+1<<endl;
+                    }
+                    cin>>att;
+                    for(i=0;i<a;i++)
+                    {
+                        for(j=0;j<b;j++)
+                        {
+                            cout<<arr[i][j][att-1]<<"\t";
+                        }
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    exit(3);
+                    break;
+                }
+        }
+    }while(option!=4);
+
+    return 0;
+}

@@ -1,0 +1,79 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int arr[3][3][3], i, j, k, a, b, c;
+    int entered_S_No,entered_semester,choosen_attribute;
+    int lower_x_range, upper_x_range, lower_y_range, upper_y_range, lower_z_range, upper_z_range;
+
+    const char* column_val[10] = {"S.No", "Age"};
+
+    cout<<"Enter the dimensions";
+    cout<<"*****"<<endl;
+    cout<<"Enter the size of the semester dimensions\n";
+    cin>>a;
+    cout<<"Enter the size of the student dimensions\n";
+    cin>>b;
+    cout<<"Enter the size of the attribute dimensions\n";
+    cin>>c;
+
+    for(i=0;i<a;i++)
+    {
+        for(j=0;j<b;j++)
+        {
+            for(k=0;k<c;k++)
+            {
+                cout<<"Enter the "<<column_val[k]<<" of student: "<<j+1<<"in sem: "<<i+1<<endl;
+                cout<<"location\t"<<i<<"\t"<<j<<"\t"<<k<<endl;
+                cin>>arr[i][j][k];
+            }
+        }
+    }
+    int choice;
+
+    cout<<"Enter the range you want to include in the dice"<<endl;
+    for(k=0;k<c;k++)
+    {
+        cout<<column_val[k]<<" : "<<k+1<<"\t"<<endl;
+    }
+    cout<<"Lower Limit"<<endl;
+    cin>>lower_x_range;
+    cout<<"Upper Limit"<<endl;
+    cin>>upper_x_range;
+
+    cout<<"Enter the range of the student "<<endl;
+    for(j=0;j<b;j++)
+    {
+        cout<<"Student "<<j+1<<endl;
+    }
+    cout<<"Lower Limit"<<endl;
+    cin>>lower_y_range;
+    cout<<"Upper Limit"<<endl;
+    cin>>upper_y_range;
+
+    cout<<"Enter the range of the semester "<<endl;
+    for(i=0;i<a;i++)
+    {
+        cout<<"Semester "<<i+1<<endl;
+    }
+    cout<<"Lower Limit"<<endl;
+    cin>>lower_z_range;
+    cout<<"Upper Limit"<<endl;
+    cin>>upper_z_range;
+
+    cout<<"*******************************"<<endl;
+    cout<<"The diced Array is "<<endl;
+
+    for(i=lower_z_range-1;i<=upper_z_range-1;i++)
+    {
+        for(j=lower_y_range-1;j<=upper_y_range-1;j++)
+        {
+            for(k=lower_x_range-1;k<=upper_x_range-1;k++)
+            {
+                cout<<arr[i][j][k]<<"\t";
+            }
+        }
+    }
+}
